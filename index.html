@@ -15,12 +15,12 @@
 
             <!-- highscore link -->
             <div>
-
+                <a href="highscores.html">Highscores</a>
             </div>
 
             <!-- timer -->
             <div>
-
+                <span id="timer">Time Limit: #</span>
             </div>
 
         </header>
@@ -29,41 +29,38 @@
         <main>
 
             <!-- question/all done -->
-            <section>
+            <section class="question">
+                <span id="quiz-question-text">Coding Multiple-Choice Quiz</span>
+            </section>
 
+            <!-- start quiz -->
+            <section class="start-quiz-section">
+                <button class="btn" id="start-quiz">Start Quiz</button>
             </section>
 
             <!-- answers (replaced with submit score section after quiz) -->
-            <section>
+            <section class="answer-section">
 
-                <div>
+                <div class="answer-buttons">
 
                     <!-- choice 1 -->
-                    <div>
-
-                    </div>
+                    <button class="btn" id="answer1" type="button"></button>
 
                     <!-- choice 2 -->
-                    <div>
-
-                    </div>
+                    <button class="btn" id="answer2" type="button"></button>
 
                     <!-- choice 3 -->
-                    <div>
-
-                    </div>
+                    <button class="btn" id="answer3" type="button"></button>
 
                     <!-- choice 4 -->
-                    <div>
-
-                    </div>
+                    <button class="btn" id="answer4" type="button"></button>
 
                 </div>
 
             </section>
 
             <!-- submit score (replaces answer section after quiz) -->
-            <section>
+            <section class="score-section">
 
                 <!-- "Please input your initials" -->
                 <div>
@@ -76,15 +73,15 @@
                 </div>
 
                 <!-- submit button -->
-                <div>
+                <button class="btn" id="submit-initials" type="submit">
 
-                </div>
+                </button>
 
             </section>
 
             <!-- correct/incorrect display -->
-            <section>
-
+            <section class="result-section">
+                <span id="result"></span>
             </section>
 
         </main>
