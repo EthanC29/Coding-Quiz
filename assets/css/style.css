@@ -67,7 +67,19 @@ main {
 }
 
 .score-section {
-    display: none
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.score-section button {
+    width: 60px;
+    margin: 5px;
+}
+
+.score-section textarea {
+    border-radius: 5px;
+    margin: 5px;
 }
 
 .result-section {

@@ -1,66 +1,78 @@
 
-var i = 0
+let i = 0
 
-var points = 0;
+let points = 0;
 
-var timeLimit = 60;
-var timer = document.querySelector("#timer")
+let timeLimit = 60;
+let timer = $("#timer")
 
-var quizQuestion = document.querySelector("#quiz-question-text");
+let quizQuestion = $("#quiz-question-text");
 
-var quizAnswer1 = document.querySelector("#answer1");
-var quizAnswer2 = document.querySelector("#answer2");
-var quizAnswer3 = document.querySelector("#answer3");
-var quizAnswer4 = document.querySelector("#answer4");
+let quizAnswer1 = $("#answer1");
+let quizAnswer2 = $("#answer2");
+let quizAnswer3 = $("#answer3");
+let quizAnswer4 = $("#answer4");
 
-var startQuizBtn = document.querySelector("#start-quiz");
+let startQuizBtn = $("#start-quiz");
 
-var submitInitials = document.querySelector("#submit-initials");
+let submitInitials = $("#submit-initials");
 
-var startQuizSection = document.querySelector(".start-quiz-section");
-var answerSection = document.querySelector(".answer-section");
-var scoreSection = document.querySelector(".score-section");
-var resultSection = document.querySelector(".result-section");
+let startQuizSection = $(".start-quiz-section");
+let answerSection = $(".answer-section");
+let scoreSection = $(".score-section");
+let resultSection = $(".result-section");
 
-var result = document.querySelector("#result");
+let result = $("#result");
 
 
 
 // questions and answers
-var questionArray = [
+const questionArray = [
     "What is the process of finding errors and fixing them within a program?", 
-    "2 + 2 =", 
-
+    "Which of the following is not a required part of a for loop?", 
+    "A loop that never ends is referred to as a(n)_________.", 
+    "Which operator should be used for determining if a variable is equal to a value but not strictly equal?", 
+    "What is always the first element in an html document?"
 ];
 
-var answer1Array = [
+const answer1Array = [
     "Compiling", 
-    "1", 
-
+    "Initialization", 
+    "While loop", 
+    "=", 
+    "html"
 ];
 
-var answer2Array = [
+const answer2Array = [
     "Executing", 
-    "2", 
-
+    "Condition", 
+    "Infinite loop", 
+    "==", 
+    "head"
 ];
 
-var answer3Array = [
+const answer3Array = [
     "Debugging", 
-    "3", 
-
+    "Variable", 
+    "Recursive loop", 
+    "===", 
+    "body"
 ];
 
-var answer4Array = [
+const answer4Array = [
     "Scanning", 
-    "4", 
-
+    "Increment", 
+    "For loop", 
+    "!=", 
+    "title"
 ];
 
-var checkAnswerArray = [
+const checkAnswerArray = [
     3, 
-    4, 
-
+    3, 
+    2, 
+    2, 
+    1
 ];
 
 
@@ -68,33 +80,34 @@ var checkAnswerArray = [
 quizQuestion.textContent = "Ready to start the quiz?"
 
 // 60 second timer
-var timeInterval = setInterval(function() {
-    if (timeLimit >= 0) {
-        if (i <= 10) {
-            timer.textContent = "Time: " + timeLimit;
-            timeLimit--;
+let countdown = function() {
+    timeLimit = 60;
+
+    let timeInterval = setInterval(function() {
+        if (timeLimit >= 0) {
+            if (i < 5) {
+                timer.textContent = "Time: " + timeLimit;
+                timeLimit--;
+            }
+            else {
+                points = timeLimit;
+                answerSection.setAttribute("style", "display: none;");
+                scoreSection.setAttribute("style", "display: flex;");
+                quizQuestion.textContent = "You completed all the questions";
+                i = 0;
+            }
         }
         else {
-            points = timeLimit;
-            timeLimit = 60;
             answerSection.setAttribute("style", "display: none;");
-            resultSection.setAttribute("style", "display: none;");
-            scoreSection.setAttribute("style", "display: block;");
-            quizQuestion.textContent = "You completed all the questions";
+            scoreSection.setAttribute("style", "display: flex;");
+            quizQuestion.textContent = "You ran out of time";
             i = 0;
         }
-    }
-    else {
-        answerSection.setAttribute("style", "display: none;");
-        resultSection.setAttribute("style", "display: none;");
-        scoreSection.setAttribute("style", "display: block;");
-        quizQuestion.textContent = "You ran out of time";
-        i = 0;
-    }
-  }, 1000);
+    }, 1000);
+}
 
 // loads the next question by replaceing values
-var loadNextQuestion = function() {
+let loadNextQuestion = function() {
 
     quizQuestion.textContent = questionArray[i];
 
@@ -106,7 +119,9 @@ var loadNextQuestion = function() {
 }
 
 // starts the quiz: hides start section, reveals answer & result sections
-var startQuiz = function() {
+let startQuiz = function() {
+
+    countdown();
 
     loadNextQuestion();
 
@@ -117,7 +132,7 @@ var startQuiz = function() {
 }
 
 // checks if answer is correct or incorrect
-var checkAnswer1 = function() {
+let checkAnswer1 = function() {
 
     if (checkAnswerArray[i] === 1) {
         result.textContent = "Correct";
@@ -133,11 +148,10 @@ var checkAnswer1 = function() {
 
 }
 
-var checkAnswer2 = function() {
+let checkAnswer2 = function() {
 
     if (checkAnswerArray[i] === 2) {
         result.textContent = "Correct";
-        pointsScore++;
     }
     else {
         result.textContent = "Incorrect";
@@ -150,11 +164,10 @@ var checkAnswer2 = function() {
 
 }
 
-var checkAnswer3 = function() {
+let checkAnswer3 = function() {
 
     if (checkAnswerArray[i] === 3) {
         result.textContent = "Correct";
-        pointsScore++;
     }
     else {
         result.textContent = "Incorrect";
@@ -167,11 +180,10 @@ var checkAnswer3 = function() {
 
 }
 
-var checkAnswer4 = function() {
+let checkAnswer4 = function() {
 
     if (checkAnswerArray[i] === 4) {
         result.textContent = "Correct";
-        pointsScore++;
     }
     else {
         result.textContent = "Incorrect";
