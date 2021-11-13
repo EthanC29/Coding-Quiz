@@ -4,26 +4,33 @@ let i = 0
 let points = 0;
 
 let timeLimit = 60;
-let timer = $("#timer")
+let timer = document.querySelector("#timer")
 
-let quizQuestion = $("#quiz-question-text");
+let quizQuestion = document.querySelector("#quiz-question-text");
 
-let quizAnswer1 = $("#answer1");
-let quizAnswer2 = $("#answer2");
-let quizAnswer3 = $("#answer3");
-let quizAnswer4 = $("#answer4");
+let quizAnswer1 = document.querySelector("#answer1");
+let quizAnswer2 = document.querySelector("#answer2");
+let quizAnswer3 = document.querySelector("#answer3");
+let quizAnswer4 = document.querySelector("#answer4");
 
-let startQuizBtn = $("#start-quiz");
+let startQuizBtn = document.querySelector("#start-quiz");
 
-let submitInitials = $("#submit-initials");
+let submitInitialsButton = document.querySelector("#submit-initials");
 
-let startQuizSection = $(".start-quiz-section");
-let answerSection = $(".answer-section");
-let scoreSection = $(".score-section");
-let resultSection = $(".result-section");
+let startQuizSection = document.querySelector(".start-quiz-section");
+let answerSection = document.querySelector(".answer-section");
+let scoreSection = document.querySelector(".score-section");
+let resultSection = document.querySelector(".result-section");
 
-let result = $("#result");
+let result = document.querySelector("#result");
+let finalScore = document.querySelector("#final-score");
 
+let scoreForm = document.querySelector("#score-form");
+
+let playerInitials = document.querySelector("#initials");
+
+var playerHighscore;
+  
 
 
 // questions and answers
@@ -75,33 +82,36 @@ const checkAnswerArray = [
     1
 ];
 
+/*
+let question1 = {
+    q = "What is the process of finding errors and fixing them within a program?", 
+    a1 = "Compiling", 
+    a2 = "Executing", 
+    a3 = "Debugging", 
+    a4 = "Scanning", 
+    aCheck = 3
+}
+*/
 
-
-quizQuestion.textContent = "Ready to start the quiz?"
 
 // 60 second timer
 let countdown = function() {
     timeLimit = 60;
 
     let timeInterval = setInterval(function() {
-        if (timeLimit >= 0) {
-            if (i < 5) {
-                timer.textContent = "Time: " + timeLimit;
-                timeLimit--;
-            }
-            else {
-                points = timeLimit;
-                answerSection.setAttribute("style", "display: none;");
-                scoreSection.setAttribute("style", "display: flex;");
-                quizQuestion.textContent = "You completed all the questions";
-                i = 0;
-            }
+        if (i <= 4 && timeLimit > 0) {
+            timer.textContent = "Time: " + timeLimit + " seconds";
+            timeLimit--;
         }
         else {
+            clearInterval(timeInterval);
+            timer.textContent = "Time: " + timeLimit + " seconds";
             answerSection.setAttribute("style", "display: none;");
-            scoreSection.setAttribute("style", "display: flex;");
-            quizQuestion.textContent = "You ran out of time";
+            scoreSection.setAttribute("style", "display: block;");
+            quizQuestion.textContent = "Quiz Complete";
+            points = timeLimit;
             i = 0;
+            finalScore.textContent = "Your final score is " + points;
         }
     }, 1000);
 }
@@ -144,7 +154,9 @@ let checkAnswer1 = function() {
 
     i++;
 
-    loadNextQuestion();
+    if (i <= 4) {
+        loadNextQuestion();
+    }
 
 }
 
@@ -160,7 +172,9 @@ let checkAnswer2 = function() {
 
     i++;
 
-    loadNextQuestion();
+    if (i <= 4) {
+        loadNextQuestion();
+    }
 
 }
 
@@ -176,7 +190,9 @@ let checkAnswer3 = function() {
 
     i++;
 
-    loadNextQuestion();
+    if (i <= 4) {
+        loadNextQuestion();
+    }
 
 }
 
@@ -192,19 +208,55 @@ let checkAnswer4 = function() {
 
     i++;
 
-    loadNextQuestion();
+    if (i <= 4) {
+        loadNextQuestion();
+    }
 
 }
 
 
+// submit initials and score and reorders scoreboard then replaces localStorage
+let submitInitials = function(event) {
 
+    // prevents the page from reloading
+    event.preventDefault();
 
+    // calls previous values for scoreboard from localStorage
+    playerHighscore[0].name = localStorage.getItem("player0.name");
+    playerHighscore[0].score = localStorage.getItem("player0.score");
+    playerHighscore[1].name = localStorage.getItem("player1.name");
+    playerHighscore[1].score = localStorage.getItem("player1.score");
+    playerHighscore[2].name = localStorage.getItem("player2.name");
+    playerHighscore[2].score = localStorage.getItem("player2.score");
+    playerHighscore[3].name = localStorage.getItem("player3.name");
+    playerHighscore[3].score = localStorage.getItem("player3.score");
+    playerHighscore[4].name = localStorage.getItem("player4.name");
+    playerHighscore[4].score = localStorage.getItem("player4.score");
 
+    // inputs current score values
+    playerHighscore[5].name = playerInitials;
+    playerHighscore[5].score = points;
 
+    // reorders scoreboard values from highest to lowest
+    playerHighscore.sort(function(a, b) {
+        return parseFloat(a.score) - parseFloat(b.score);
+    });
 
+    // returns reordered values to localStorage except last value
+    localStorage.setItem("player0.name", playerHighscore[0].name);
+    localStorage.setItem("player0.score", playerHighscore[0].score);
+    localStorage.setItem("player1.name", playerHighscore[1].name);
+    localStorage.setItem("player1.score", playerHighscore[1].score);
+    localStorage.setItem("player2.name", playerHighscore[2].name);
+    localStorage.setItem("player2.score", playerHighscore[2].score);
+    localStorage.setItem("player3.name", playerHighscore[3].name);
+    localStorage.setItem("player3.score", playerHighscore[3].score);
+    localStorage.setItem("player4.name", playerHighscore[4].name);
+    localStorage.setItem("player4.score", playerHighscore[4].score);
 
+    location.href = "index.html";
 
-
+}
 
 
 
@@ -221,3 +273,21 @@ quizAnswer2.addEventListener("click", checkAnswer2);
 quizAnswer3.addEventListener("click", checkAnswer3);
 quizAnswer4.addEventListener("click", checkAnswer4);
 
+scoreForm.addEventListener("submit", submitInitials);
+
+
+
+
+
+
+
+console.log(localStorage.getItem("player0.name"));
+console.log(localStorage.getItem("player0.score"));
+console.log(localStorage.getItem("player1.name"));
+console.log(localStorage.getItem("player1.score"));
+console.log(localStorage.getItem("player2.name"));
+console.log(localStorage.getItem("player2.score"));
+console.log(localStorage.getItem("player3.name"));
+console.log(localStorage.getItem("player3.score"));
+console.log(localStorage.getItem("player4.name"));
+console.log(localStorage.getItem("player4.score"));

@@ -22,6 +22,7 @@ main {
     display: flex;
     flex-direction: column;
     margin: 50px auto;
+    width: 40%;
 }
 
 .answer-buttons {
@@ -57,7 +58,7 @@ main {
 
 .question {
     font-weight: bolder;
-    font-size: 40px;
+    font-size: 30px;
     margin-bottom: 30px;
     margin-top: 50px;
 }
@@ -68,8 +69,6 @@ main {
 
 .score-section {
     display: none;
-    flex-direction: row;
-    flex-wrap: wrap;
 }
 
 .score-section button {
@@ -80,6 +79,7 @@ main {
 .score-section textarea {
     border-radius: 5px;
     margin: 5px;
+    vertical-align: center;
 }
 
 .result-section {
@@ -89,6 +89,8 @@ main {
     padding: 10px;
 }
 
-main {
-    width: 40%;
+#initials {
+    width: 100px;
+    height: 30px;
+    margin: 5px;
 }

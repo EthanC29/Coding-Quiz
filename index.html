@@ -20,7 +20,7 @@
 
             <!-- timer -->
             <div>
-                <span id=timer></span>
+                <span id=timer>Time: 60 seconds</span>
             </div>
 
         </header>
@@ -60,18 +60,21 @@
             </section>
 
             <!-- submit score (replaces answer section after quiz) -->
-            <section class="score-section">
+            <form class="score-section" id="score-form">
+                
+                <!-- final score -->
+                <p id="final-score"></p>
 
                 <!-- "Please input your initials" -->
-                <label for="initials">Please input your initials</label>
+                <label for="initials">Please input your initials:</label>
 
                 <!-- input textbox for initials -->
-                <textarea id="initials" name="initials" rows="1" cols="5"></textarea>
+                <input type="text" id="initials" name="initials"></input>
 
                 <!-- submit button -->
-                <button class="btn" id="submit-initials" type="submit">Submit</button>
+                <button class="btn" id="submit-initials" type="submit" form="initials">Submit</button>
 
-            </section>
+            </form>
 
             <!-- correct/incorrect display -->
             <section class="result-section">
