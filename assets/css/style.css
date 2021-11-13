@@ -95,6 +95,10 @@ main {
     margin: 5px;
 }
 
+#submit-initials {
+    width: 100px;
+}
+
 
 
 /** highscores.html */

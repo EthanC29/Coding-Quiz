@@ -41,7 +41,7 @@ li5ScoreText = document.createElement("span");
 // display scores from localStorage to scoreboard
 var loadScoreboard = function() {
 
-    if (localStorage.getItem("player0.name") !== "N/A" && localStorage.getItem("player0.score") !== "N/A") {
+    if (localStorage.getItem("player0.name") !== "0" && localStorage.getItem("player0.score") !== "0") {
 
         olEl.appendChild(li1);
         li1.appendChild(li1Name);
@@ -49,11 +49,11 @@ var loadScoreboard = function() {
         li1.appendChild(li1Score);
         li1Score.textContent = localStorage.getItem("player0.score");
 
-        li1.setAttribute("style", "background-color: rgb(170, 215, 255); font-weight: normal;");
+        li1.setAttribute("style", "display: flex; background-color: rgb(170, 215, 255); font-weight: normal;");
 
     };
 
-    if (localStorage.getItem("player1.name") !== "N/A" && localStorage.getItem("player1.score") !== "N/A") {
+    if (localStorage.getItem("player1.name") !== "0" && localStorage.getItem("player1.score") !== "0") {
 
         olEl.appendChild(li2);
         li2.appendChild(li2Name);
@@ -61,11 +61,11 @@ var loadScoreboard = function() {
         li2.appendChild(li2Score);
         li2Score.textContent = localStorage.getItem("player1.score");
 
-        li2.setAttribute("style", "background-color: rgb(170, 215, 255); font-weight: normal;");
+        li2.setAttribute("style", "display: flex; background-color: rgb(170, 215, 255); font-weight: normal;");
 
     };
 
-    if (localStorage.getItem("player2.name") !== "N/A" && localStorage.getItem("player2.score") !== "N/A") {
+    if (localStorage.getItem("player2.name") !== "0" && localStorage.getItem("player2.score") !== "0") {
 
         olEl.appendChild(li3);
         li3.appendChild(li3Name);
@@ -73,11 +73,11 @@ var loadScoreboard = function() {
         li3.appendChild(li3Score);
         li3Score.textContent = localStorage.getItem("player2.score");
 
-        li3.setAttribute("style", "background-color: rgb(170, 215, 255); font-weight: normal;");
+        li3.setAttribute("style", "display: flex; background-color: rgb(170, 215, 255); font-weight: normal;");
 
     };
 
-    if (localStorage.getItem("player3.name") !== "N/A" && localStorage.getItem("player3.score") !== "N/A") {
+    if (localStorage.getItem("player3.name") !== "0" && localStorage.getItem("player3.score") !== "0") {
 
         olEl.appendChild(li4);
         li4.appendChild(li4Name);
@@ -85,11 +85,11 @@ var loadScoreboard = function() {
         li4.appendChild(li4Score);
         li4Score.textContent = localStorage.getItem("player3.score");
 
-        li4.setAttribute("style", "background-color: rgb(170, 215, 255); font-weight: normal;");
+        li4.setAttribute("style", "display: flex; background-color: rgb(170, 215, 255); font-weight: normal;");
 
     };
 
-    if (localStorage.getItem("player4.name") !== "N/A" && localStorage.getItem("player4.score") !== "N/A") {
+    if (localStorage.getItem("player4.name") !== "0" && localStorage.getItem("player4.score") !== "0") {
 
         olEl.appendChild(li5);
         li5.appendChild(li5Name);
@@ -97,7 +97,7 @@ var loadScoreboard = function() {
         li5.appendChild(li5Score);
         li5Score.textContent = localStorage.getItem("player4.score");
 
-        li5.setAttribute("style", "background-color: rgb(170, 215, 255); font-weight: normal;");
+        li5.setAttribute("style", "display: flex; background-color: rgb(170, 215, 255); font-weight: normal;");
 
     };
 
@@ -107,22 +107,22 @@ loadScoreboard();
 
 var clearScoreboard = function() {
 
-    localStorage.setItem("player0.name", "N/A");
-    localStorage.setItem("player0.score", "N/A");
-    localStorage.setItem("player1.name", "N/A");
-    localStorage.setItem("player1.score", "N/A");
-    localStorage.setItem("player2.name", "N/A");
-    localStorage.setItem("player2.score", "N/A");
-    localStorage.setItem("player3.name", "N/A");
-    localStorage.setItem("player3.score", "N/A");
-    localStorage.setItem("player4.name", "N/A");
-    localStorage.setItem("player4.score", "N/A");
+    localStorage.setItem("player0.name", "0");
+    localStorage.setItem("player0.score", "0");
+    localStorage.setItem("player1.name", "0");
+    localStorage.setItem("player1.score", "0");
+    localStorage.setItem("player2.name", "0");
+    localStorage.setItem("player2.score", "0");
+    localStorage.setItem("player3.name", "0");
+    localStorage.setItem("player3.score", "0");
+    localStorage.setItem("player4.name", "0");
+    localStorage.setItem("player4.score", "0");
 
-    li1.setAttribute("style", "background-color: white;");
-    li2.setAttribute("style", "background-color: white;");
-    li3.setAttribute("style", "background-color: white;");
-    li4.setAttribute("style", "background-color: white;");
-    li5.setAttribute("style", "background-color: white;");
+    li1.setAttribute("style", "display: none;");
+    li2.setAttribute("style", "display: none;");
+    li3.setAttribute("style", "display: none;");
+    li4.setAttribute("style", "display: none;");
+    li5.setAttribute("style", "display: none;");
 
 };
 

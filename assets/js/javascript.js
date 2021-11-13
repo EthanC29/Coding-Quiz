@@ -247,83 +247,47 @@ let submitInitials = function(event) {
     event.preventDefault();
 
     // calls previous values for scoreboard from localStorage
-    if (localStorage.getItem("player0.name") !== "N/A" && localStorage.getItem("player0.score") !== "N/A") {
+    if (localStorage.getItem("player0.name") == "0" && localStorage.getItem("player0.score") == "0") {
         
-        playerHighscore[0].name = localStorage.getItem("player0.name");
-        playerHighscore[0].score = localStorage.getItem("player0.score");
+        localStorage.setItem("player0.name", playerInitials.value);
+        localStorage.setItem("player0.score", points);
     
     }
     else {
-        localStorage.setItem("player0.name", "N/A");
-        localStorage.setItem("player0.score", "N/A");
-    };
-
-    if (localStorage.getItem("player1.name") !== "N/A" && localStorage.getItem("player1.score") !== "N/A") {
+        if (localStorage.getItem("player1.name") == "0" && localStorage.getItem("player1.score") == "0") {
         
-        playerHighscore[1].name = localStorage.getItem("player1.name");
-        playerHighscore[1].score = localStorage.getItem("player1.score");
-    
-    }
-    else {
-        localStorage.setItem("player1.name", "N/A");
-        localStorage.setItem("player1.score", "N/A");
-    };
-
-    if (localStorage.getItem("player2.name") !== "N/A" && localStorage.getItem("player2.score") !== "N/A") {
+            localStorage.setItem("player1.name", playerInitials.value);
+            localStorage.setItem("player1.score", points);
         
-        playerHighscore[2].name = localStorage.getItem("player2.name");
-        playerHighscore[2].score = localStorage.getItem("player2.score");
-    
-    }
-    else {
-        localStorage.setItem("player2.name", "N/A");
-        localStorage.setItem("player2.score", "N/A");
-    };
-
-    if (localStorage.getItem("player3.name") !== "N/A" && localStorage.getItem("player3.score") !== "N/A") {
+        }
+        else {
+            if (localStorage.getItem("player2.name") == "0" && localStorage.getItem("player2.score") == "0") {
         
-        playerHighscore[3].name = localStorage.getItem("player3.name");
-        playerHighscore[3].score = localStorage.getItem("player3.score");
-    
-    }
-    else {
-        localStorage.setItem("player3.name", "N/A");
-        localStorage.setItem("player3.score", "N/A");
-    };
-
-    if (localStorage.getItem("player4.name") !== "N/A" && localStorage.getItem("player4.score") !== "N/A") {
+                localStorage.setItem("player2.name", playerInitials.value);
+                localStorage.setItem("player2.score", points);
+            
+            }
+            else {
+                if (localStorage.getItem("player3.name") == "0" && localStorage.getItem("player3.score") == "0") {
         
-        playerHighscore[4].name = localStorage.getItem("player4.name");
-        playerHighscore[4].score = localStorage.getItem("player4.score");
-    
-    }
-    else {
-        localStorage.setItem("player4.name", "N/A");
-        localStorage.setItem("player4.score", "N/A");
+                    localStorage.setItem("player3.name", playerInitials.value);
+                    localStorage.setItem("player3.score", points);
+                
+                }
+                else {
+                    if (localStorage.getItem("player4.name") == "0" && localStorage.getItem("player4.score") == "0") {
+        
+                        localStorage.setItem("player4.name", playerInitials.value);
+                        localStorage.setItem("player4.score", points);
+                    
+                    }
+                    else {
+
+                    };
+                };
+            };
+        };
     };
-
-
-
-    // inputs current score values
-    playerHighscore[5].name = playerInitials;
-    playerHighscore[5].score = points;
-
-    // reorders scoreboard values from highest to lowest
-    playerHighscore.sort(function(a, b) {
-        return parseFloat(a.score) - parseFloat(b.score);
-    });
-
-    // returns reordered values to localStorage except last value
-    localStorage.setItem("player0.name", playerHighscore[0].name);
-    localStorage.setItem("player0.score", playerHighscore[0].score);
-    localStorage.setItem("player1.name", playerHighscore[1].name);
-    localStorage.setItem("player1.score", playerHighscore[1].score);
-    localStorage.setItem("player2.name", playerHighscore[2].name);
-    localStorage.setItem("player2.score", playerHighscore[2].score);
-    localStorage.setItem("player3.name", playerHighscore[3].name);
-    localStorage.setItem("player3.score", playerHighscore[3].score);
-    localStorage.setItem("player4.name", playerHighscore[4].name);
-    localStorage.setItem("player4.score", playerHighscore[4].score);
 
     location.href = "highscores.html";
 
