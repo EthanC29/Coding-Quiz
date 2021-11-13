@@ -94,3 +94,22 @@ main {
     height: 30px;
     margin: 5px;
 }
+
+
+
+/** highscores.html */
+
+#ordered-scores {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+}
+
+#ordered-scores li {
+    margin: 5px 0; 
+    padding: 10px 10%; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+    font-weight: bold;
+}

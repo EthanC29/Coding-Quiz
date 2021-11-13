@@ -29,7 +29,32 @@ let scoreForm = document.querySelector("#score-form");
 
 let playerInitials = document.querySelector("#initials");
 
-var playerHighscore;
+var playerHighscore = [
+    {
+        name: "N/A",
+        score: "N/A"
+    },
+    {
+        name: "N/A",
+        score: "N/A"
+    },
+    {
+        name: "N/A",
+        score: "N/A"
+    },
+    {
+        name: "N/A",
+        score: "N/A"
+    },
+    {
+        name: "N/A",
+        score: "N/A"
+    },
+    {
+        name: "N/A",
+        score: "N/A"
+    }
+]
   
 
 
@@ -222,16 +247,62 @@ let submitInitials = function(event) {
     event.preventDefault();
 
     // calls previous values for scoreboard from localStorage
-    playerHighscore[0].name = localStorage.getItem("player0.name");
-    playerHighscore[0].score = localStorage.getItem("player0.score");
-    playerHighscore[1].name = localStorage.getItem("player1.name");
-    playerHighscore[1].score = localStorage.getItem("player1.score");
-    playerHighscore[2].name = localStorage.getItem("player2.name");
-    playerHighscore[2].score = localStorage.getItem("player2.score");
-    playerHighscore[3].name = localStorage.getItem("player3.name");
-    playerHighscore[3].score = localStorage.getItem("player3.score");
-    playerHighscore[4].name = localStorage.getItem("player4.name");
-    playerHighscore[4].score = localStorage.getItem("player4.score");
+    if (localStorage.getItem("player0.name") !== "N/A" && localStorage.getItem("player0.score") !== "N/A") {
+        
+        playerHighscore[0].name = localStorage.getItem("player0.name");
+        playerHighscore[0].score = localStorage.getItem("player0.score");
+    
+    }
+    else {
+        localStorage.setItem("player0.name", "N/A");
+        localStorage.setItem("player0.score", "N/A");
+    };
+
+    if (localStorage.getItem("player1.name") !== "N/A" && localStorage.getItem("player1.score") !== "N/A") {
+        
+        playerHighscore[1].name = localStorage.getItem("player1.name");
+        playerHighscore[1].score = localStorage.getItem("player1.score");
+    
+    }
+    else {
+        localStorage.setItem("player1.name", "N/A");
+        localStorage.setItem("player1.score", "N/A");
+    };
+
+    if (localStorage.getItem("player2.name") !== "N/A" && localStorage.getItem("player2.score") !== "N/A") {
+        
+        playerHighscore[2].name = localStorage.getItem("player2.name");
+        playerHighscore[2].score = localStorage.getItem("player2.score");
+    
+    }
+    else {
+        localStorage.setItem("player2.name", "N/A");
+        localStorage.setItem("player2.score", "N/A");
+    };
+
+    if (localStorage.getItem("player3.name") !== "N/A" && localStorage.getItem("player3.score") !== "N/A") {
+        
+        playerHighscore[3].name = localStorage.getItem("player3.name");
+        playerHighscore[3].score = localStorage.getItem("player3.score");
+    
+    }
+    else {
+        localStorage.setItem("player3.name", "N/A");
+        localStorage.setItem("player3.score", "N/A");
+    };
+
+    if (localStorage.getItem("player4.name") !== "N/A" && localStorage.getItem("player4.score") !== "N/A") {
+        
+        playerHighscore[4].name = localStorage.getItem("player4.name");
+        playerHighscore[4].score = localStorage.getItem("player4.score");
+    
+    }
+    else {
+        localStorage.setItem("player4.name", "N/A");
+        localStorage.setItem("player4.score", "N/A");
+    };
+
+
 
     // inputs current score values
     playerHighscore[5].name = playerInitials;
@@ -254,7 +325,7 @@ let submitInitials = function(event) {
     localStorage.setItem("player4.name", playerHighscore[4].name);
     localStorage.setItem("player4.score", playerHighscore[4].score);
 
-    location.href = "index.html";
+    location.href = "highscores.html";
 
 }
 
@@ -274,20 +345,3 @@ quizAnswer3.addEventListener("click", checkAnswer3);
 quizAnswer4.addEventListener("click", checkAnswer4);
 
 scoreForm.addEventListener("submit", submitInitials);
-
-
-
-
-
-
-
-console.log(localStorage.getItem("player0.name"));
-console.log(localStorage.getItem("player0.score"));
-console.log(localStorage.getItem("player1.name"));
-console.log(localStorage.getItem("player1.score"));
-console.log(localStorage.getItem("player2.name"));
-console.log(localStorage.getItem("player2.score"));
-console.log(localStorage.getItem("player3.name"));
-console.log(localStorage.getItem("player3.score"));
-console.log(localStorage.getItem("player4.name"));
-console.log(localStorage.getItem("player4.score"));
