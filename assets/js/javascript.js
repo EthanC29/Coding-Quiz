@@ -1,4 +1,4 @@
-
+// declaring variables
 let i = 0
 
 let points = 0;
@@ -107,6 +107,7 @@ const checkAnswerArray = [
     1
 ];
 
+// tried to do it another way but couldn't figure it out
 /*
 let question1 = {
     q = "What is the process of finding errors and fixing them within a program?", 
@@ -243,10 +244,10 @@ let checkAnswer4 = function() {
 // submit initials and score and reorders scoreboard then replaces localStorage
 let submitInitials = function(event) {
 
-    // prevents the page from reloading
+    // prevents the page from reloading when form submits
     event.preventDefault();
 
-    // calls previous values for scoreboard from localStorage
+    // sets localStorage values from games
     if (localStorage.getItem("player0.name") == "0" && localStorage.getItem("player0.score") == "0") {
         
         localStorage.setItem("player0.name", playerInitials.value);
@@ -289,18 +290,12 @@ let submitInitials = function(event) {
         };
     };
 
+    // sends window to highscores page
     location.href = "highscores.html";
 
 }
 
-
-
-
-
-
-
-
-
+// event listeners for all buttons on page
 startQuizBtn.addEventListener("click", startQuiz);
 
 quizAnswer1.addEventListener("click", checkAnswer1);

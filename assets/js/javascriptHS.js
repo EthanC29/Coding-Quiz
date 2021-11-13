@@ -2,7 +2,7 @@ let clearHS = document.querySelector("#clear");
 
 let goBack = document.querySelector("#go-back");
 
-
+// DOM Elements
 var body = document.body;
 var olEl = document.querySelector("#ordered-scores");
 
@@ -105,6 +105,7 @@ var loadScoreboard = function() {
 
 loadScoreboard();
 
+// clear scoreboard when button clicked
 var clearScoreboard = function() {
 
     localStorage.setItem("player0.name", "0");
@@ -126,11 +127,11 @@ var clearScoreboard = function() {
 
 };
 
+// back to main page when button clicked
 var backMainPage = function() {
     location.href = "index.html";
 };
 
-
+// button click event listeners
 clearHS.addEventListener("click", clearScoreboard);
-
 goBack.addEventListener("click", backMainPage);
